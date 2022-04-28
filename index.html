@@ -9,32 +9,55 @@
     <title>Cifrador</title>
 </head>
 <body>
+    <div class="lines line1"> </div>
+    <div class="lines line2"> </div>
+    <div class="lines line3"> </div>
     <main>
         <div class="titleContainer">
-            <h1>Cifrador</h1>
+            <h2 class="blueish">ALURA CIPHER</h2>
+            <h2 class="redish">ALURA CIPHER</h2>
+            <h2>ALURA CIPHER</h2>
         </div>
 
             <div class="mainContainer">
-
+                <div class="textContainer blueish">
+                    <textarea name="textArea" id="textArea2" placeholder="Enter your text. Then press encrypt or decrypt"></textarea>
+                    <div class="buttons blueish">
+                        <button class="button" >Encrypt_</button>
+                        <button class="button" >Decrypt_</button>
+                    </div>
+                </div>
+                <div class="textContainer redish">
+                    <textarea name="textArea" id="textArea3" placeholder="Enter your text. Then press encrypt or decrypt"></textarea>
+                    <div class="buttons redish">
+                        <button class="button" >Encrypt_</button>
+                        <button class="button" >Decrypt_</button>
+                    </div>
+                </div>
                 <div class="textContainer">
-                    <textarea name="textArea" id="textArea"></textarea>
+                    <textarea name="textArea" id="textArea" placeholder="Enter your text. Then press encrypt or decrypt"></textarea>
+                    <div class="buttons">
+                        <button class="button" id="encriptar">Encrypt_</button>
+                        <button class="button" id="desencriptar">Decrypt_</button>
+                    </div>
                 </div>
 
+                <div class="messageContainer blueish">
+                    <p class="message" ></p>
+                    <button class="button messageButton" >Copy_</button>
+                </div>
+                <div class="messageContainer redish">
+                    <p class="message" ></p>
+                    <button class="button messageButton" >Copy_</button>
+                </div>
                 <div class="messageContainer">
-                    <p class="message" id="message"></p>
-                    <button class="button messageButton" id="copiar">Copiar</button>
+                    <p class="message" ></p>
+                    <button class="button messageButton" id="copiar">Copy_</button>
                 </div>
 
             </div>
 
-        <div class="buttons">
-            <button class="button" id="encriptar">Encriptar</button>
-            <button class="button" id="desencriptar">Desencriptar</button>
-        </div>
     </main>
-    <footer>
-
-    </footer>
     <script src="script.js"></script>
 </body>
 </html>

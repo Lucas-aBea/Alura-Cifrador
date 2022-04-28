@@ -1,8 +1,20 @@
 const textArea = document.querySelector("#textArea")
+const textArea2 = document.querySelector("#textArea2")
+const textArea3 = document.querySelector("#textArea3")
 const encriptar = document.getElementById("encriptar")
 const desencriptar = document.getElementById("desencriptar")
-const message = document.getElementById("message")
+const message = document.querySelectorAll(".message")
 const copiar = document.getElementById("copiar")
+
+textArea.addEventListener("input",(ev)=> textAreaOnChange(ev))
+encriptar.addEventListener("click",encriptarTexto)
+desencriptar.addEventListener("click",desencriptarTexto)
+copiar.addEventListener("click",copiarMessage)
+
+function textAreaOnChange(ev){
+    textArea2.value = ev.target.value
+    textArea3.value = ev.target.value
+}
 
 
 const claves ={
@@ -31,7 +43,9 @@ function encriptarTexto(){
                 return item
         }
     })
-    message.innerText = encriptedArr.join("")
+    message.forEach(item=>{
+        item.innerText = encriptedArr.join("")
+    })
 }
 
 function desencriptarTexto(){
@@ -41,15 +55,32 @@ function desencriptarTexto(){
         .replaceAll(claves.e,"e")
         .replaceAll(claves.i,"i")
         .replaceAll(claves.u,"u")
-    message.innerText = desencriptedArr
+        message.forEach(item=>{
+            item.innerText = desencriptedArr
+        })
 }
 
 function copiarMessage(){
-    navigator.clipboard.writeText(message.innerText)
-    alert(`mensaje copiado: ${message.innerText}`)
+    
+    navigator.clipboard.writeText(message[1].innerText)
+    message.forEach(item=>{
+        item.innerText = ""
+    })
+    textArea.value = "Copied_"
+    textArea2.value = "Copied_"
+    textArea3.value = "Copied_"
+    setTimeout(()=>{
+        textArea.value = ""
+        textArea2.value = ""
+        textArea3.value = ""
+    },1000)
 }
 
 
-encriptar.addEventListener("click",encriptarTexto)
-desencriptar.addEventListener("click",desencriptarTexto)
-copiar.addEventListener("click",copiarMessage)
+//animation time randomizer
+
+const lines = document.querySelectorAll(".lines")
+
+lines.forEach(item=>{
+    item.style.setProperty("--animation-time", ((2+Math.random()*4))+"s")
+})

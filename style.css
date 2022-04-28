@@ -1,50 +1,135 @@
+@font-face {
+    font-family: cracked;
+    src: url(./assets/Cracked\ Code.ttf);
+}
+@font-face {
+  font-family: clacon;
+  src: url(./assets/clacon2.ttf);
+}
+:root{
+  --animation-time: 3s; 
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: cracked;
+}
+::selection {
+  color: white;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 body{
-    background-color: bisque;
+  max-height: 100vh;
+  overflow: hidden;
+  background-color: rgb(4, 1, 19);
+}
+
+/*original grain effect by samn thiscodeworks.com*/
+
+body:after {
+  animation: grain 8s steps(10) infinite;
+  background-image: url("https://assets.website-files.com/5dff182dc3faab4c98b08388/5dff21c5e65e0610a8d38b86_noisy-texture-100x100-o5-d10-c-FFFFFA-t1.png");
+  content: "";
+  height: 300%;
+  left: -50%;
+  position: fixed;
+  top: -100%;
+  width: 300%;
 }
 
 main{
-    height: 80vh;
+    height: 100vh;
+    max-height: 100vh;
     width: 100vw;
+    position: relative;
+}
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background-image: url(./assets/Logo.png);
+  background-position:center;
+  background-size:cover;
+  filter: grayscale(100%) blur(15px) brightness(200%);
 }
 .titleContainer{
-    width: 100vw;
-    height: 10vh;
-    background-color: antiquewhite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 5vh;
+    width: 100%;  
+    height: 15vh;
+    position: relative;
+}
+h2{
+    position: absolute;
+    left: 40%;
+    color: white;
+    text-shadow: 0px 0px 2px white;
+    font-size: 2em;
+    animation: glitch1 3s infinite;
+}
+
+h2.blueish{
+    animation: glitch2 3s infinite;
+    color: blue;
+}
+h2.redish{
+    animation: glitch3 3s infinite;
+    color: red;
 }
 
 .mainContainer{
+    height: 80%;
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    position: relative;
+    z-index: 10;
 }
 
 
 .textContainer{
     width: 70%;
-    height: 85%;
+    height: 35%;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    animation: glitch1 3s infinite;
+}
+
+.textContainer.blueish{
+    animation: glitch2 3s infinite;
+}
+.textContainer.blueish textArea{
+    color: blue;
+}
+.textContainer.redish{
+    animation: glitch3 3s infinite;
+}
+.textContainer.redish textArea{
+    color: red;
 }
 
 .textContainer textarea{
     width: 100%;
     height: 100%;
-    border-radius: 30px;
     resize: none;
     overflow-x: hidden;
     overflow-y: scroll;
     padding: 10px;
     font-size: 2em;
     text-align: center;
+    background: transparent;
+    border: none;
+    color: white;
+    text-shadow: 0px 0px 2px white;
+    font-family: clacon;
+}
+
+.textContainer textarea:focus{
+    outline: none;
 }
 
 ::-webkit-scrollbar{
@@ -52,24 +137,294 @@ main{
 }
 
 .messageContainer{
-    width: 25%;
-    height: 85%;
-    background-color: white;
-    border-radius: 30px;
-    border:1px solid #777;
+    position:absolute;
+    left: 15%;
+    top: 60%;
+    width: 70%;
+    height: 40%;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 30px;
-    font-size: large;
+    color: white;
+    border-top: 1px dashed white;
+    animation: glitch1 3s infinite;
 }
-
+.messageContainer p {
+  font-family: clacon;
+  font-size: 2em;
+  text-shadow: 0px 0px 2px white;
+  text-align: center;
+}
+.messageContainer.blueish{
+    animation: glitch2 3s infinite;
+    color: blue;
+    border-top: 1px dashed blue;
+}
+.messageContainer.blueish button{
+  color: blue;
+}
+.messageContainer.redish{
+    color: red;
+    animation: glitch3 3s infinite;
+    border-top: 1px dashed red;
+}
+.messageContainer.redish button{
+  color: red;
+}
 
 .buttons{
-    width:70%;
+    width:100%;
     margin-right: 30%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
+.button{
+    background-color: transparent;
+    color:white;
+    text-shadow: 0px 0px 2px white;
+    border:none;
+    font-size: 2em;
+    font-family: clacon;
+}
+.button:hover{
+    color: rgb(38, 156, 38);
+}
+
+.buttons.blueish .button{
+  color: blue;
+}
+.buttons.redish .button{
+  color: red;
+}
+
+
+/*Keyframes from a pen by Felix Rilling*/
+
+@keyframes glitch1 {
+    0% {
+      transform: none;
+      opacity: 1;
+    }
+    7% {
+      transform: skew(-0.5deg, -0.9deg);
+      opacity: 0.75;
+    }
+    10% {
+      transform: none;
+      opacity: 1;
+    }
+    27% {
+      transform: none;
+      opacity: 1;
+    }
+    30% {
+      transform: skew(0.8deg, -0.1deg);
+      opacity: 0.75;
+    }
+    35% {
+      transform: none;
+      opacity: 1;
+    }
+    52% {
+      transform: none;
+      opacity: 1;
+    }
+    55% {
+      transform: skew(-1deg, 0.2deg);
+      opacity: 0.75;
+    }
+    50% {
+      transform: none;
+      opacity: 1;
+    }
+    72% {
+      transform: none;
+      opacity: 1;
+    }
+    75% {
+      transform: skew(0.4deg, 1deg);
+      opacity: 0.75;
+    }
+    80% {
+      transform: none;
+      opacity: 1;
+    }
+    100% {
+      transform: none;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes glitch2 {
+    0% {
+      transform: none;
+      opacity: 0.25;
+    }
+    7% {
+      transform: translate(-2px, -3px);
+      opacity: 0.5;
+    }
+    10% {
+      transform: none;
+      opacity: 0.25;
+    }
+    27% {
+      transform: none;
+      opacity: 0.25;
+    }
+    30% {
+      transform: translate(-5px, -2px);
+      opacity: 0.5;
+    }
+    35% {
+      transform: none;
+      opacity: 0.25;
+    }
+    52% {
+      transform: none;
+      opacity: 0.25;
+    }
+    55% {
+      transform: translate(-5px, -1px);
+      opacity: 0.5;
+    }
+    50% {
+      transform: none;
+      opacity: 0.25;
+    }
+    72% {
+      transform: none;
+      opacity: 0.25;
+    }
+    75% {
+      transform: translate(-2px, -6px);
+      opacity: 0.5;
+    }
+    80% {
+      transform: none;
+      opacity: 0.25;
+    }
+    100% {
+      transform: none;
+      opacity: 0.25;
+    }
+  }
+  
+  @keyframes glitch3 {
+    0% {
+      transform: none;
+      opacity: 0.25;
+    }
+    7% {
+      transform: translate(2px, 3px);
+      opacity: 0.5;
+    }
+    10% {
+      transform: none;
+      opacity: 0.25;
+    }
+    27% {
+      transform: none;
+      opacity: 0.25;
+    }
+    30% {
+      transform: translate(5px, 2px);
+      opacity: 0.5;
+    }
+    35% {
+      transform: none;
+      opacity: 0.25;
+    }
+    52% {
+      transform: none;
+      opacity: 0.25;
+    }
+    55% {
+      transform: translate(5px, 1px);
+      opacity: 0.5;
+    }
+    50% {
+      transform: none;
+      opacity: 0.25;
+    }
+    72% {
+      transform: none;
+      opacity: 0.25;
+    }
+    75% {
+      transform: translate(2px, 6px);
+      opacity: 0.5;
+    }
+    80% {
+      transform: none;
+      opacity: 0.25;
+    }
+    100% {
+      transform: none;
+      opacity: 0.25;
+    }
+  }
+
+  .lines{
+    position: absolute;
+    bottom:-10px;
+    width: 100vw;
+    height: 1px;
+    opacity: 0.7;
+    background-color: white;
+    animation: glitch1 3s infinite;
+  }
+  .lines::after{
+    content: "";
+    position: absolute;
+    bottom:0px;
+    width: 100vw;
+    height: 1px;
+    opacity: 0.7;
+    background-color: blue;
+    animation: glitch2 3s infinite;
+  }
+  .lines::before{
+    content: "";
+    position: absolute;
+    bottom:0px;
+    width: 100vw;
+    height: 1px;
+    opacity: 0.7;
+    background-color: red;
+    animation: glitch3 3s infinite;
+  }
+  .line1{
+    animation: linesUp var(--animation-time) infinite;
+    
+  }
+  .line2{
+    animation: linesUp var(--animation-time) infinite;
+    animation-delay: 1s;
+  }
+  .line3{
+    animation: linesUp var(--animation-time) infinite;
+    animation-delay: 1.5s;
+  }
+
+  @keyframes linesUp {
+    0%{
+      transform: translateY(0);
+    }
+    100%{
+      transform: translateY(-110vh);
+    }
+  }
+
+  @keyframes grain {
+    0%, 100% {transform: translate(0,0);}
+    10% {transform: translate(-5%,-10%);}
+    30% {transform: translate(3%,-15%);}
+    50% {transform: translate(12%,9%);}
+    70% {transform: translate(9%,4%);}
+    90% {transform: translate(-1%,7%);}
+  }
